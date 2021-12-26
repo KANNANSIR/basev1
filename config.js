@@ -1,9 +1,9 @@
 global.DeveloperMode = 'false' //true Or false
 global.linkGC = ['Soon!']
 global.channelYT = ['lain kali!'] 
-global.owner = ['62895378264836']// Put your number here
-global.mods = ['62895378264836'] // Want some help?
-global.prems = ['62895378264836'] // Premium user has unlimited limit
+global.owner = ['919633687665']// Put your number here
+global.mods = ['919633687665'] // Want some help?
+global.prems = ['919633687666'] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
   nrtm: 'https://nurutomo.herokuapp.com',
