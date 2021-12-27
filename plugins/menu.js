@@ -11,7 +11,7 @@ let path = require('path')
 let handler  = async (m, { conn, usedPrefix: _p, command }) => {
 
   let old = performance.now()
-  await conn.fakeReply(m.chat, '*[❗] Loading...*', '0@s.whatsapp.net', `*Sebaiknya Membaca Rules BOT dulu Sebelum Menggunakan!*\n\n*Ketik .rules*`)
+  await conn.fakeReply(m.chat, '*[❗] Loading...*', '0@s.whatsapp.net', `*It's best to read the rules bot before using the sheet of rules*`)
     let RendyGans = 'https://i.ibb.co/wpWpVNd/avatar-contact.png'
   let pp = './src/menu.png'
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
@@ -146,31 +146,31 @@ const wita = moment.tz('Asia/Makassar').format("HH:mm:ss")
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || `    
 *❏ INFO DEVELOPER* ❋ཻུ۪۪⸙
-◪ *Nama* : Rama gans
-◪ *Tanggal Lahir* : 06 oktober 2006
+◪ *Nama* : Krishnadas 
+◪ *Tanggal Lahir* : 02 August 2005
 ◪ *Sekolah* : mau tau aja:v
 ◪ *Tinggal* : Planet Bumi Bagian Indonesia🗿
 
 *❏ MEDIA SOSIAL DEVELOPER* ❋ཻུ۪۪⸙
 ◪ *Youtube* : -
 ◪ *Whatsapp* : -
-◪ *Github* : nanti
-◪ *Instagram* : Zyxmaple
+◪ *Github* : KANNANSIR 
+◪ *Instagram* : kannanbro_f_f
 
 *❏ DEVICE DEVELOPER* ❋ཻུ۪۪⸙
-◪ *Merk HP* : Vivo y12s
+◪ *Merk HP* : Redmi Note 9 Pro
 ◪ *Versi HP* : 11
-◪ *Versi ColorOS* : v5.2
-◪ *Model HP* : CPH1901
-◪ *Cpu* : Qualcomm Snapdragon 600 1,80GHz
-◪ *Ram* : 4gb
-◪ *Screen Size* : 6,20 Inch
-◪ *Weight* : 168 Gram
-◪ *Capacity* : 4230 mAh
+◪ *Versi MIUI* : 12.5.6
+◪ *Model HP* : Endi
+◪ *Cpu* : Qualcomm Snapdragon 720g 2.5GHz
+◪ *Ram* : 6gb
+◪ *Screen Size* : 6,67 Inch
+◪ *Weight* : 209 Gram
+◪ *Capacity* : 5020 mAh
 ◪ *Technology* : Li-ion
-◪ *GPU Renderer*: Adreno (TM) 506
+◪ *GPU Renderer*: Adreno (TM) 
 
-⸙ *ZyxMapLe - B O T Z*
+⸙ *© FEBA MWOL*
 └───────────┈ ❋ཻུ۪۪⸙
 
 • *INFO BOT*
