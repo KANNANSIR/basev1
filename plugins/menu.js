@@ -136,87 +136,152 @@ const wita = moment.tz('Asia/Makassar').format("HH:mm:ss")
         limit: plugin.limit
       }
     })
+    if (teks == '404') {
+      return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
+        "listMessage": {
+          "title": `${ucapan()}, ${name}
+⏳ 𝕋𝕀𝕄𝔼 : ${time}
+💮 𝕎𝔼𝔼𝕂 : ${week}
+📆 𝔻𝔸𝕋𝔼: ${date}
+☮️ 𝕆𝕎ℕ𝔼ℝ : KRISHNADAS `
+ 
+          .trim(),
+           "description": "🅳🅾🅽🆃 🆂🅿🅰🅼",
+          "buttonText": "Click  Here",
+          "listType": "SINGLE_SELECT",
+          "sections": [
+            {
+              "rows": [
+                 {
+                  "title": `📜 All Commands`,
+                  "description": "Show all features",
+                  "rowId": ".? all"
+                }, {
+                  "title": "🎮 Game",
+                  "description": "Game features",
+                  "rowId": ".? game"
+
+                }, {
+                  "title": "💸 XP",
+                  "description": "Features level & usage limit",
+                  "rowId": ".? xp"
+
+                },  {
+                  "title": "🎥 Video Maker",
+                  "description": "Making Different Types Of Videos",
+                  "rowId": ".? .videomaker"
+
+                },{
+                  "title": "🖼️ Sticker",
+                  "description": "Features for making stickers",
+                  "rowId": ".? stiker"
+                }, { 
+                "title": "💢 Anime",
+                "description": "Anime Related Plugin",
+                "rowId": ".? anime"
+              },  {
+                  "title": "✍️ Quotes",
+                  "description": "Gives You Random Quotes..",
+                  "rowId": ".? quotes"
+                }, {
+                  "title": "👨🏻‍💻 Admin",
+                  "description": "Group Admin Commands",
+                  "rowId": ".? admin"
+                }, {
+                  "title": "🫂 Group",
+                  "description": "Group Related Commands",
+                  "rowId": ".? grup"
+                }, {
+                  "title": "✨ Premium",
+                  "description": "Premium Users Plugins",
+                  "rowId": ".? premium"
+                }, {
+                  "title": "🌐 Internet",
+                  "description": "Commands Related To Internet",
+                  "rowId": ".? internet"
+                }, {
+                  "title": "👤 Anonymous",
+                  "description": "To Start Anonymous Chatting",
+                  "rowId": ".? anonymous"
+                }, {
+                  "title": "🔅 Magic Shell",
+                  "description": "Random answer feature",
+                  "rowId": `.? magicshell`
+                }, {
+                  "title": "☯️ Nulis & Logo",
+                  "description": "Text Maker Coammnds",
+                  "rowId": ".? nulis"
+                }, {
+                  "title": "⏬ Downloader",
+                  "description": "Downloading Commnds",
+                  "rowId": ".? downloader"
+                }, {
+                  "title": "⚙️ Tools",
+                  "description": "Tool features",
+                  "rowId": ".? tools"
+                }, {
+                  "title": "🗣️ Voice Changer",
+                  "description": "To change the voice",
+                  "rowId": `.? audio`
+                }, {
+                  "title": "😜 Fun",
+                  "description": "Just for fun",
+                  "rowId": ".? fun"
+                }, {
+                  "title": "📁 Database",
+                  "description": "User database",
+                  "rowId": ".? database"
+                },{
+                  "title": "☮️ Owner",
+                  "description": "Owner's special features",
+                  "rowId": ".? owner"
+                }
+              ]
+            }
+          ], "contextInfo": {
+            "stanzaId": m.key.id,
+            "participant": m.sender,
+            "quotedMessage": m.message
+          }
+        }
+      }, {}), { waitForAck: true })
+    }
+    // use this if you use business whatsapp
+    //   throw `
+    // ┌〔 LIST MENU 〕
+    // ├ ${_p + command} all
+    // ├ ${_p + command} game
+    // ├ ${_p + command} xp
+    // ├ ${_p + command} stiker
+    // ├ ${_p + command} quotes
+    // ├ ${_p + command} admin
+    // ├ ${_p + command} group
+    // ├ ${_p + command} premium
+    // ├ ${_p + command} internet
+    // ├ ${_p + command} anonymous
+    // ├ ${_p + command} nulis
+    // ├ ${_p + command} downloader
+    // ├ ${_p + command} tools
+    // ├ ${_p + command} fun
+    // ├ ${_p + command} database
+    // ├ ${_p + command} vote
+    // ├ ${_p + command} quran
+    // ├ ${_p + command} audio
+    // ├ ${_p + command} jadibot
+    // ├ ${_p + command} info
+    // ├ ${_p + command} owner
+    // └────  
+    //     `.trim()
     let groups = {}
     for (let tag in tags) {
       groups[tag] = []
-      for (let menu of help)
-        if (menu.tags && menu.tags.includes(tag))
-          if (menu.help) groups[tag].push(menu)
+      for (let plugin of help)
+        if (plugin.tags && plugin.tags.includes(tag))
+          if (plugin.help) groups[tag].push(plugin)
+      // for (let tag of plugin.tags)
+      //   if (!(tag in tags)) tags[tag] = tag
     }
-    conn.menu = conn.menu ? conn.menu : {}
-    let before = conn.menu.before || `    
-*❏ INFO DEVELOPER* ❋ཻུ۪۪⸙
-◪ *Nama* : Krishnadas 
-◪ *Tanggal Lahir* : 02 August 2005
-◪ *Sekolah* : mau tau aja:v
-◪ *Tinggal* : Planet Bumi Bagian Indonesia🗿
 
-*❏ MEDIA SOSIAL DEVELOPER* ❋ཻུ۪۪⸙
-◪ *Youtube* : -
-◪ *Whatsapp* : -
-◪ *Github* : KANNANSIR 
-◪ *Instagram* : kannanbro_f_f
-
-*❏ DEVICE DEVELOPER* ❋ཻུ۪۪⸙
-◪ *Merk HP* : Redmi Note 9 Pro
-◪ *Versi HP* : 11
-◪ *Versi MIUI* : 12.5.6
-◪ *Model HP* : Endi
-◪ *Cpu* : Qualcomm Snapdragon 720g 2.5GHz
-◪ *Ram* : 6gb
-◪ *Screen Size* : 6,67 Inch
-◪ *Weight* : 209 Gram
-◪ *Capacity* : 5020 mAh
-◪ *Technology* : Li-ion
-◪ *GPU Renderer*: Adreno (TM) 
-
-⸙ *© FEBA MWOL*
-└───────────┈ ❋ཻུ۪۪⸙
-
-• *INFO BOT*
-◈ *Connect* : Baileys 0.2.4
-◈ *Mode* : Public
-◈ *Server* : Ubuntu Linux
-◈ *Prefix* : Multi Prefix
-
-• *INFO USER*
-✎ ${ucapanWaktu} %name
-◎ *Name* : %name
-◎ *Nomor Whatsapp* : wa.me/${who.split`@`[0]}
-◎ *EXP* : %exp XP
-◎ *EXP to LevelUP* : %xp4levelup
-◎ *EXP Total* : %totalexp
-◎ *Money* : ${money} 💵
-◎ *Role* : ${role}
-◎ *Ticket* :  %limit 🎟️
-◎ *Level* : %level
-
-• *DATE FEATURE*
-⦿  *Day* : %week
-⦿  *Weton* : %weton
-⦿  *Date* : %date
-⦿  *Islamic Date* : ${dateIslamic}
-
-• *TIME FEATURE*
-⦿  *WIT* : ${wit} WIT
-⦿  *WITA* :  ${wita} WITA
-⦿  *WIB* : %time WIB
-⦿  *Runtime* : %uptime
-
-┏━━[ *BUG/ERROR REPORT* ]━━┈ ❋ཻུ۪۪⸙
-│
-│ ◈  *_Mau Request Fitur? Gunakan_* : .request
-│ ◈  *_Menemukan BUG? Laporkan ke Owner dengan Menggunakan_* : .bug / .report
-│ *Laporan yang Anda Kirimkan itu bersifat Palsu*
-│ *Maka tidak Akan ditanggapi dan*
-│ *Anda akan di Banned Sementara!*
-│
-│⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ ⌕
-│
-┗━━━━━━━━━━━━┈ ❋ཻུ۪۪⸙
-
-
-%readmore`
     let header = conn.menu.header || '≋ *%category*'
     let body   = conn.menu.body   || '➸ %cmd%islimit'
     let footer = conn.menu.footer || '\n'
