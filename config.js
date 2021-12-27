@@ -31,8 +31,8 @@ global.APIKeys = { // APIKey Here
 }
 
 // Sticker WM
-global.packname = 'ZyxMapLe'
-global.author = 'Rama Gans'
+global.packname = 'FEBAMWOL'
+global.author = 'Krishnadas & Pranav'
 
 global.multiplier = 20 // The higher, The harder levelup
 
