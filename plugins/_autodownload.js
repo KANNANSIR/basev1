@@ -21,7 +21,7 @@ handler.all = async function (m, { isPrems, isOwner }) {
         if (!res.ok) throw await `${res.status} ${res.statusText}`
         let json = await res.json()
         await m.reply(global.wait)
-        await conn.sendVideo(m.chat, json.wm, 'BOTSTYLE', m)
+        await conn.sendVideo(m.chat, json.wm, '© FEBAMWOL', m)
     }
 
     if (/^.*cocofun/i.test(m.text)) {
@@ -29,7 +29,7 @@ handler.all = async function (m, { isPrems, isOwner }) {
         if (!res.ok) throw await res.text()
         let json = await res.json()
         await m.reply(global.wait)
-        await this.sendVideo(m.chat, json.download, `BOTSTYLE`, m)
+        await this.sendVideo(m.chat, json.download, `© FEBAMWOL`, m)
     }
 
     if (/^.*(fb.watch|facebook.com)/i.test(m.text)) {
@@ -100,7 +100,7 @@ handler.all = async function (m, { isPrems, isOwner }) {
 *Ukuran File Audio:* ${filesizeF}
 *Ukuran File Video:* ${filesize}
           `.trim(),
-            thumb, 'BOSTYLE', 'AUDIO', `.yta ${vid.url}`, 'VIDEO', `.yt ${vid.url}`)
+            thumb, '© FEBAMWOL', 'AUDIO', `.yta ${vid.url}`, 'VIDEO', `.yt ${vid.url}`)
     }
 
 }
