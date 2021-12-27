@@ -133,7 +133,9 @@ const wita = moment.tz('Asia/Makassar').format("HH:mm:ss")
         help: plugin.help,
         tags: plugin.tags,
         prefix: 'customPrefix' in plugin,
-        limit: plugin.limit
+        limit: plugin.limit,
+        premium: plugin.premium,
+        enabled: !plugin.disabled,
       }
     })
     if (teks == '404') {
@@ -281,40 +283,50 @@ const wita = moment.tz('Asia/Makassar').format("HH:mm:ss")
       // for (let tag of plugin.tags)
       //   if (!(tag in tags)) tags[tag] = tag
     }
-
-    let header = conn.menu.header || '≋ *%category*'
-    let body   = conn.menu.body   || '➸ %cmd%islimit'
-    let footer = conn.menu.footer || '\n'
-    let after  = conn.menu.after  || (conn.user.jid == global.conn.user.jid ? '' : `*FebamwoL Hosted by Krishnadas 🇮🇳*\n`) + `\n*Feba %version*\n\`\`\`\Created By : Krishnadas
-\`\`\`\n\n▌│█║▌║▌║║▌║▌║█│▌▌│█║▌║▌║\n▌│█║▌║▌║║▌║▌║█│▌▌│█║▌║▌║`
-    let _text  = before + '\n'
-    for (let tag in groups) {
-      _text += header.replace(/%category/g, tags[tag]) + '\n'
-      for (let menu of groups[tag]) {
-        for (let help of menu.help)
-          _text += body.replace(/%cmd/g, menu.prefix ? help : '%p' + help).replace(/%islimit/g, menu.limit ? ' (Limit)' : '')  + '\n'
-      }
-      _text += footer + '\n'
-    }
-    _text += after
-    text =  typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
+    conn.menu = conn.menu ? conn.menu : {}
+    let before = conn.menu.before || defaultMenu.before
+    let header = conn.menu.header || defaultMenu.header
+    let body = conn.menu.body || defaultMenu.body
+    let footer = conn.menu.footer || defaultMenu.footer
+    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : `Presented by https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
+    let _text = [
+      before,
+      ...Object.keys(tags).map(tag => {
+        return header.replace(/%category/g, tags[tag]) + '\n' + [
+          ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
+            return menu.help.map(help => {
+              return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
+                .replace(/%islimit/g, menu.limit ? '(Limit)' : '')
+                .replace(/%isPremium/g, menu.premium ? '(Premium)' : '')
+                .trim()
+            }).join('\n')
+          }),
+          footer
+        ].join('\n')
+      }),
+      after
+    ].join('\n')
+    text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
     let replace = {
       '%': '%',
-      p: _p, uptime,
+      p: _p, uptime, muptime,
+      me: conn.user.name,
       npmname: package.name,
       npmdesc: package.description,
       version: package.version,
       exp: exp - min,
       maxexp: xp,
       totalexp: exp,
-      xp4levelup: max - exp,
+      xp4levelup: max - exp <= 0 ? `Ready for *${_p}levelup*` : `${max - exp} More XP for levelup`,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
-      level, limit, name, weton, week, date, time, battery, totalreg, totalgc, totalft, totalsend,
+      level, limit, name, weton, week, date, time, totalreg, rtotalreg, role,
       readmore: readMore
     }
-    text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
-    
-conn.sendFile(m.chat, RendyGans, 'pp.jpg', text.trim(), { key: { remoteJid: '0@s.whatsapp.net' }, message: { imageMessage: { caption: 'FebaMwoL', jpegThumbnail: await (await fetch(pp)).buffer() }}})
+    text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
+    await conn.send2ButtonLoc(m.chat, await (await fetch("https://telegra.ph/file/e32f2651bac64b6d62c81.jpg")).buffer(), text.trim(), 'Made With ❤️ by Anirudh', 'Owner Bot', ',owner', 'All Commands', '.? all', m)
+  } catch (e) {
+    conn.reply(m.chat, 'Sorry, Try Again', m)
+    throw e
   }
 }
 handler.help = ['menu']
