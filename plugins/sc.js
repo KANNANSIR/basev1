@@ -1,13 +1,9 @@
 let handler  = async (m, { conn, usedPrefix: _p }) => {
 let info = `
-*SC Ini Menggunakan Termux*
-*nanti*
-_Karrna banyak yg nyolong_
-_lain kali sc nya_
-_wa.me/62895378264836_
+*SC PRIVATE ANU*
 `.trim()
 
-conn.fakeReply(m.chat, info, '0@s.whatsapp.net', '🔥 *FREE SC* 🔥', 'status@broadcast')
+conn.fakeReply(m.chat, info, '0@s.whatsapp.net', '🔥 *SC PRIVATE ANU MWONU* 🔥', 'status@broadcast')
 }
 handler.help = ['sc']
 handler.tags = ['tutor']
