@@ -220,7 +220,8 @@ const wita = moment.tz('Asia/Makassar').format("HH:mm:ss")
     let header = conn.menu.header || '≋ *%category*'
     let body   = conn.menu.body   || '➸ %cmd%islimit'
     let footer = conn.menu.footer || '\n'
-    let after  = conn.menu.after  || (conn.user.jid == global.conn.user.jid ? '' : `*BOTz Hosted by ZyxMapLe 🇮🇩*\n`) + `\n*ZyxMapLe %version*\n\`\`\`\Created By : RamaGanz\`\`\`\n\n▌│█║▌║▌║║▌║▌║█│▌▌│█║▌║▌║\n▌│█║▌║▌║║▌║▌║█│▌▌│█║▌║▌║`
+    let after  = conn.menu.after  || (conn.user.jid == global.conn.user.jid ? '' : `*FebamwoL Hosted by Krishnadas 🇮🇳*\n`) + `\n*Feba %version*\n\`\`\`\Created By : Krishnadas
+\`\`\`\n\n▌│█║▌║▌║║▌║▌║█│▌▌│█║▌║▌║\n▌│█║▌║▌║║▌║▌║█│▌▌│█║▌║▌║`
     let _text  = before + '\n'
     for (let tag in groups) {
       _text += header.replace(/%category/g, tags[tag]) + '\n'
@@ -248,7 +249,7 @@ const wita = moment.tz('Asia/Makassar').format("HH:mm:ss")
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).join`|`})`, 'g'), (_, name) => replace[name])
     
-conn.sendFile(m.chat, RendyGans, 'pp.jpg', text.trim(), { key: { remoteJid: '0@s.whatsapp.net' }, message: { imageMessage: { caption: 'ZyxMapLe BoT', jpegThumbnail: await (await fetch(pp)).buffer() }}})
+conn.sendFile(m.chat, RendyGans, 'pp.jpg', text.trim(), { key: { remoteJid: '0@s.whatsapp.net' }, message: { imageMessage: { caption: 'FebaMwoL', jpegThumbnail: await (await fetch(pp)).buffer() }}})
   }
 }
 handler.help = ['menu']
