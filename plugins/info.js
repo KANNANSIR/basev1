@@ -3,7 +3,7 @@ let info = `
 ┏━━°❀❬ *INFO* ❭❀°━━┓
 ┃
 ┃> Bot Recoded By :
-┃• PGID
+┃• KRISHNADAS 
 ┃
 ┃> Bot Dibuat Dengan :
 ┃• JavaScript via NodeJS
@@ -11,18 +11,18 @@ let info = `
 ┃
 ┃> Thanks To :
 ┃• Nurutomo
-┃• ZyxMapLeBoT/Rama
-┃• RC047/Kuhong
+┃• Krishnadas 
+┃• 
 ┃
 ┣━━°❀❬ *DONASI* ❭❀°━━┓
-┣➥ *Tree:*  [0895-3782-64836]
-┣➥ *Dana:* [0895-3782-64836]
+┣➥ *Tree:*  [8888888888]
+┣➥ *Dana:* [8888888888]
 ┃ 「 *Chat OWNER* 」
-┃ > *Ingin donasi? https://wa.me/62895378264836*
+┃ > *Ingin donasi? https://wa.me/919633687665*
 ┗━━━━━━━━━━━━━━━━
 `.trim()
 
-conn.fakeReply(m.chat, info, '0@s.whatsapp.net', '*BOT TERVERIFIKASI*', 'status@broadcast')
+conn.fakeReply(m.chat, info, '0@s.whatsapp.net', '*FEBA MWOL*', 'status@broadcast')
 }
 handler.help = ['info']
 handler.tags = ['info']
